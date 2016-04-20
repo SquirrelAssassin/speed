@@ -61,20 +61,6 @@
                     regionNames.Add("indiawest", "Azure - India West");
                     regionNames.Add("indiasouth", "Azure - India South");
 
-                    // AWS
-                    regionNames.Add("ap-northeast-1", "AWS - Asia Pacific (Tokyo)");
-                    regionNames.Add("ap-southeast-1", "AWS - Asia Pacific (Singapore)");
-                    regionNames.Add("ap-southeast-2", "AWS - Asia Pacific (Sydney)");
-                    regionNames.Add("eu-central-1", "AWS - EU (Frankfurt)");
-                    regionNames.Add("eu-west-1", "AWS - EU (Ireland)");
-                    regionNames.Add("sa-east-1", "AWS - South America (Sao Paulo)");
-                    regionNames.Add("us-east-1", "AWS - US East (N. Virginia)");
-                    regionNames.Add("us-west-1", "AWS - US West (N. California)");
-                    regionNames.Add("us-west-2", "AWS - US West (Oregon)");
-                    regionNames.Add("us-gov-west-1", "AWS - US Gov");
-                    regionNames.Add("cn-north-1", "AWS - China North (Beijing)");
-                    // AliCloud
-                    regionNames.Add("alicloud", "AliCloud");
                 }
                 return regionNames;
             }

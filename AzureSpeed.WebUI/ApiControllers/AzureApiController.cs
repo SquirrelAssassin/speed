@@ -138,47 +138,6 @@
                     result.Add(ipRange);
                 }
             }
-
-            // Load AWS ip range data
-            string awsIpFile = ConfigurationManager.AppSettings["AwsIpRangeFile"];
-            string json = File.ReadAllText(ipFilePath + @"\IpRangeFiles\AWS\" + awsIpFile);
-            var jsSerializer = new JavaScriptSerializer();
-
-            var awsIpRangeData = jsSerializer.Deserialize<AwsIpRangeData>(json);
-            foreach (var prefix in awsIpRangeData.prefixes)
-            {
-                string region = prefix.region;
-                string subnet = prefix.ip_prefix;
-                if (result.Any(v => v.Region == region))
-                {
-                    var ipRange = result.First(v => v.Region == region);
-                    ipRange.Subnet.Add(subnet);
-                    var network = IPNetwork.Parse(subnet);
-                    ipRange.TotalIpCount += network.Total;
-                }
-                else
-                {
-                    var ipRange = new IpRangeViewModel { Cloud = "AWS", Region = region, Subnet = new List<string>() };
-                    ipRange.Subnet.Add(subnet);
-                    var network = IPNetwork.Parse(subnet);
-                    ipRange.TotalIpCount += network.Total;
-                    result.Add(ipRange);
-                }
-            }
-
-            // Load AliCloud ip range data
-            string aliCloudIpFile = ConfigurationManager.AppSettings["AliCloudIpRangeFile"];
-            string[] lines = File.ReadAllLines(ipFilePath + @"\IpRangeFiles\AliCloud\" + aliCloudIpFile);
-            var aliIpRange = new IpRangeViewModel { Cloud = "AliCloud", Region = "AliCloud", Subnet = new List<string>() };
-            foreach (var line in lines)
-            {
-                string subnet = line;
-                aliIpRange.Subnet.Add(subnet);
-                var network = IPNetwork.Parse(subnet);
-                aliIpRange.TotalIpCount += network.Total;
-            }
-            result.Add(aliIpRange);
-
             return result;
         }
     }

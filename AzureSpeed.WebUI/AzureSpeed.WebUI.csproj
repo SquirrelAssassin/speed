@@ -192,9 +192,6 @@
     <Content Include="app\directives.js" />
     <Content Include="app\filters.js" />
     <Content Include="app\utils.js" />
-    <Content Include="App_Data\IpRangeFiles\AliCloud\ip.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Data\IpRangeFiles\Azure\PublicIPs_MC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

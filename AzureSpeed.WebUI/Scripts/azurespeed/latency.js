@@ -32,7 +32,7 @@
             })
 
             if (accm.length >= 1) {
-                $.post('http://blog.chrisdituri.com:2345/', JSON.stringify(accm))
+                $.post('http://192.168.0.1:2345/', JSON.stringify(accm))
                  .done(function (data) {
                     console.log("successfully returned: " + data);
                  });

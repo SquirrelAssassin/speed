@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Azure, Microsoft Azure, Azure Storage, Azure network latency, Azure Blob Upload Speed" />
+    <meta name="description" content="Test network latencies and speed to Azure data centers from different countries." />
+    <title>@ViewBag.Title - Azure Speed Test</title>
+    @Styles.Render("~/Content/css")
+    @Html.Partial("_Analytics")
+</head>
+<body>
+    <div class="float-left">
+        <h2 id="timecountdown"></h2>
+    </div>
+    <div>
+        @RenderBody()
+        @Html.Partial("_Adsense")
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/3rd")
+    @Scripts.Render("~/bundles/sb-admin-2")
+    @Scripts.Render("~/bundles/jazure")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", false)
+
+    <script>
+    var dt = '@ViewBag.Rem_Time';
+    var dateAr = dt.split('-');
+    var newDate = dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2];
+
+    var end = new Date(dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2]);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById('timecountdown').innerHTML = 'Count Down Ends!';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var _hours = Math.floor((distance % _day) / _hour);
+        var _minutes = Math.floor((distance % _hour) / _minute);
+        var _seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('timecountdown').innerHTML = ' Hrs: ' + _hours;
+        document.getElementById('timecountdown').innerHTML += ' Mins: ' + _minutes;
+        document.getElementById('timecountdown').innerHTML += ' Secs: ' + _seconds;
+    }
+    timer = setInterval(showRemaining, 1000);
+    </script>
+</body>
+</html>

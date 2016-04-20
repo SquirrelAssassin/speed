@@ -3,13 +3,21 @@
     using System;
     using System.Collections.Generic;
     using System.Net;
+    using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
 
     public class AzureController : BaseController
     {
         public ActionResult Index()
         {
-            return View("Latency");
+            if (Session["Rem_Time"] == null)
+            {
+                Session["Rem_Time"] = DateTime.Now.AddSeconds(6).ToString("dd-MM-yyyy h:mm:ss tt");
+            }
+
+            ViewBag.Rem_Time = Session["Rem_Time"];
+            return View();
         }
 
         public ActionResult Latency()

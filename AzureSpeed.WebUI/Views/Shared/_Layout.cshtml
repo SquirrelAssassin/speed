@@ -7,12 +7,22 @@
     <meta name="keywords" content="Azure, Microsoft Azure, Azure Storage, Azure network latency, Azure Blob Upload Speed" />
     <meta name="description" content="Test network latencies and speed to Azure data centers from different countries." />
     <title>@ViewBag.Title - Azure Speed Test</title>
+    <style type="text/css">
+        #Button1 {
+            height: 80px;
+            width: 254px;
+        }
+    </style>
     @Styles.Render("~/Content/css")
 
 </head>
 <body>
     <div class="float-left">
         <h2 id="timecountdown"></h2>
+        <br /> 
+        <input id="Button1" type="button" value="Submit" />
+        <br />
+        <br />
     </div>
     <div>
         @RenderBody()
@@ -46,6 +56,8 @@
         if (distance < 0) {
             clearInterval(timer);
             document.getElementById('timecountdown').innerHTML = 'Count Down Ends!';
+            window.location.href = '/Account/Login';
+
             return;
         }
         var days = Math.floor(distance / _day);

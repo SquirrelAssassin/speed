@@ -6,17 +6,10 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-
     public class AzureController : BaseController
     {
         public ActionResult Index()
         {
-            if (Session["Rem_Time"] == null)
-            {
-                Session["Rem_Time"] = DateTime.Now.AddSeconds(6).ToString("dd-MM-yyyy h:mm:ss tt");
-            }
-
-            ViewBag.Rem_Time = Session["Rem_Time"];
             return View();
         }
 

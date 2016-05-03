@@ -2,7 +2,7 @@
     // TODO: rewrite with angular code
     var latency = {
         pingCount: 0,
-        maxPingCount: 180,
+        maxPingCount: 100,
         lineChartHeight: 240,
         lineChartWidth: $('.chart-container').width(),
         updateInterval: 2000,
@@ -32,7 +32,7 @@
             })
 
             if (accm.length >= 1) {
-                $.post('http://192.168.0.1:2345/', JSON.stringify(accm))
+                $.post('http://127.0.0.1:5338/results', JSON.stringify(accm))
                  .done(function (data) {
                     console.log("successfully returned: " + data);
                  });
